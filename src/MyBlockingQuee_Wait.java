@@ -1,8 +1,8 @@
 import java.util.LinkedList;
+import java.util.Optional;
 import java.util.Queue;
 
-public class MyBlockingQuee_Wait<E>
-{
+public class MyBlockingQuee_Wait<E> {
     private Queue<E> queue;
     private int max;
 
@@ -37,9 +37,15 @@ public class MyBlockingQuee_Wait<E>
                 throw new RuntimeException(e);
             }
         }
+
         E item = queue.remove();
         System.out.println(Thread.currentThread().getName() + " : " + item);
-        notifyAll();;
+        notifyAll();
         return item;
     }
+    public int size()
+    {
+        return queue.size();
+    }
+
 }

@@ -3,20 +3,18 @@ class Value
     private int num;
     private boolean valueSet = false;
 
-    Value() { num = 0; }
-
     public synchronized void set(int n)
     {
-        while (valueSet){
+        while (valueSet)
+        {
             try {
                 wait();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-
         num = n;
-        System.out.println("Set : " + num);
+        System.out.println("Set: " + num);
         valueSet = true;
         notify();
     }
@@ -31,7 +29,7 @@ class Value
                 throw new RuntimeException(e);
             }
         }
-        System.out.println("Show : " + num);
+        System.out.println("Show: " + num);
         valueSet = false;
         notify();
     }

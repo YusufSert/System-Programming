@@ -1,7 +1,8 @@
-class Read implements Runnable
-{
+class Read implements Runnable {
+
     Value val;
-    Read(Value v) {val = v;}
+
+    Read(Value v){this.val = v;}
 
     public void run()
     {

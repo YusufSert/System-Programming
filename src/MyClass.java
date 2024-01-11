@@ -5,14 +5,9 @@ public class MyClass {
     {
         count = 0;
     }
-
-    public  int get()
-    {
-        return count;
-    }
-
+    public int get(){ return count;}
     public synchronized void inc()
     {
-        count ++;
+        count++;
     }
 }

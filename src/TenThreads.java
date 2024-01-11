@@ -6,24 +6,28 @@ public class TenThreads {
     final static int WIDTH = 100;
     final static int HEIGHT = 100;
 
-    private static class WorkerThread extends Thread
+
+    private static class  WorkerThread extends Thread
     {
         int max = Integer.MIN_VALUE;
-        int[] ourArray;
+        int [] ourArray;
 
-        public WorkerThread( int [] ourArray)
+        public WorkerThread(int [] ourArray)
         {
             this.ourArray = ourArray;
         }
 
-        public void run() {
-            for (int i = 0; i < ourArray.length; i++)
+        public void run()
+        {
+            for(int i = 0; i < ourArray.length; i++)
             {
-                max = Math.max( max, ourArray[i] );
+                System.out.println(ourArray[i]);
+                max = Math.max(max , ourArray[i]);
             }
         }
 
-        public int getMax() {
+        public int getMax()
+        {
             return max;
         }
     }
@@ -43,21 +47,22 @@ public class TenThreads {
         int[][] bigMatrix = getBigHairyMatrix();
         int max = Integer.MIN_VALUE;
 
-        for ( int i = 0; i < 10; i++) {
-            threads[i] = new WorkerThread( bigMatrix[i] );
+        for(int i = 0; i < threads.length; i++)
+        {
+            threads[i] = new WorkerThread(bigMatrix[i]);
             threads[i].start();
         }
-
-        try {
+        try
+        {
             for (int i = 0; i < 10; i++)
             {
                 threads[i].join();
-                max = Math.max( max, threads[i].getMax());
+                max = Math.max(max, threads[i].getMax());
             }
-        }catch (InterruptedException e)
-        {
-
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
+        System.out.println( "Maxmimum value was " + max );
     }
 
 }

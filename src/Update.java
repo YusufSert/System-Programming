@@ -1,9 +1,8 @@
 public class Update implements Runnable{
+
     Value val;
 
-    Update(Value v) {
-        val = v;
-    }
+    Update(Value v) {this.val = v;}
 
     public void run()
     {

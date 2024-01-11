@@ -13,7 +13,7 @@ public class CountBytes {
         while((c=in.read()) != -1)
         {
             System.out.println(total + "bytes");
-            System.out.println(c);
+            System.out.println((char)c);
             total++;
         }
         in.close();
